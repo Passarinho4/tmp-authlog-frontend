@@ -1,0 +1,10 @@
+body {
+    background-color: #FFE082;
+}
+.login-form {
+    width:180px;
+    margin: 0 auto;
+}
+.btn-login {
+    margin-top:10px;
+}
