@@ -1,6 +1,29 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-</p>
 
-<button class="btn btn-primary">Test</button>
+<div class="col-md-8 col-md-offset-2">
+  <button class="btn btn-sm btn-primary" ng-click="refreshApplications()">Load Applications</button>
+  <button class="btn btn-sm btn-success" ng-click="createApplicationPopup()">Add Application</button>
+  <div class="panel panel-primary panel-application">
+    <div class="panel-heading">Your applications</div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>FBAppId</th>
+          <th>FBRedirectURI</th>
+          <th>Secret</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="app in applications">
+          <td>{{app.appId}}</td>
+          <td>{{app.facebookAppId}}</td>
+          <td>{{app.facebookRedirectURI}}</td>
+          <td>{{app.secret}}</td>
+          <td><button class="btn-xs btn-danger" ng-click="deleteApplication(app.appId)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,10 +1,21 @@
 body {
-    background-color: #FFE082;
+    background-color: #252830;
 }
 .login-form {
     width:180px;
     margin: 0 auto;
 }
-.btn-login {
+.btn-form {
     margin-top:10px;
+}
+.panel-application {
+    margin-top: 10px;
+}
+
+.form-create-application {
+    width:180px;
+    margin: 0 auto;
+}
+.table-td-vert-middle tbody>tr>td {
+    vertical-align: middle;
 }
