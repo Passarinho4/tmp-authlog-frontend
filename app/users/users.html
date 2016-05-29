@@ -22,6 +22,8 @@
                 <th>Picture</th>
                 <th>Username</th>
                 <th>Mail</th>
+                <th>Privileges</th>
+                <th>Manage</th>
             </tr>
             </thead>
             <tbody>
@@ -29,6 +31,11 @@
                 <td><img ng-src="{{user.pictureURL}}"></td>
                 <td>{{user.username}}</td>
                 <td>{{user.mail}}</td>
+                <td>{{user.privileges}}</td>
+                <td>
+                    <button ng-click="addPrivilegePopup(user.id)" class="btn btn-xs btn-success">Add privilege</button>
+                    <button ng-click="deletePrivilegePopup(user.id, user.privileges)" class="btn btn-xs btn-warning">Delete privilege</button>
+                </td>
             </tr>
             </tbody>
         </table>

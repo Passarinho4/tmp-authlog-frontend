@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('UsersCtrl', ['$scope', 'urls', '$http', '$routeParams',
-        function($scope, urls, $http, $routeParams) {
+    .controller('UsersCtrl', ['$scope', 'urls', '$http', '$routeParams', 'ngDialog', '$window',
+        function($scope, urls, $http, $routeParams, ngDialog, $window) {
 
             $scope.applications = [];
             $scope.users = [];
@@ -17,15 +17,61 @@ angular.module('myApp')
                 }
             );
 
+            $scope.refreshUsers = function () {
+                if(undefined != $scope.appId) {
+                    $http.get(urls.apiUrl + "applications/"+$scope.appId+"/users").then(
+                        function successCallback(result) {
+                            $scope.users = result.data;
+                            console.log($scope.users)
+                        },
+                        function failureCallback(result) {
+                            console.log("Can't get users from api.");
+                        });
+                }
+            };
 
-            if(undefined != $scope.appId) {
-                $http.get(urls.apiUrl + "applications/"+$scope.appId+"/users").then(
+            $scope.refreshUsers();
+
+            $scope.addPrivilegePopup = function (userId) {
+                ngDialog.open({
+                    template: 'users/popups/addPrivilege.html',
+                    className: 'ngdialog-theme-default',
+                    controller: 'UsersCtrl',
+                    data: {"userId": userId}
+                });
+            };
+
+            $scope.deletePrivilegePopup = function (userId, privileges) {
+                ngDialog.open({
+                    template: 'users/popups/deletePrivilege.html',
+                    className: 'ngdialog-theme-default',
+                    controller: 'UsersCtrl',
+                    data: {"userId": userId, "privileges": privileges}
+                });
+            };
+
+            $scope.addPrivilege = function () {
+
+                $http.post(urls.apiUrl + "users/" + $scope.ngDialogData.userId + "/privileges", [$scope.privilege]).then(
                     function successCallback(result) {
-                        $scope.users = result.data;
+                        ngDialog.close();
+                        $window.location.reload();
                     },
                     function failureCallback(result) {
-                        console.log("Can't get users from api.");
+                        console.log("Can't add privilege, something went wrong.");
                     });
-            }
+
+            };
+
+            $scope.deletePrivilege = function (privilege) {
+                $http.delete(urls.apiUrl + "users/" + $scope.ngDialogData.userId + "/privileges/"+privilege).then(
+                    function successCallback(result) {
+                        ngDialog.close();
+                        $window.location.reload();
+                    },
+                    function failureCallback(result) {
+                        console.log("Can't remove privilege, something went wrong.");
+                    });
+            };
 
     }]);
