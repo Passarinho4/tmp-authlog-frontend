@@ -2,9 +2,12 @@
 
 // Declare app level module which depends on views, and components
 var mainApp = angular.module('myApp', [
-  'ngRoute', 'ngDialog'
+  'ngRoute', 'ngDialog', 'n3-line-chart', 'n3-pie-chart'
 ]).config(['$routeProvider', function($routeProvider) {
   $routeProvider
+      .when('/', {
+          templateUrl: 'dashboard/dashboard.html',
+          controller: 'DashboardCtrl'})
       .when('/login', {
           templateUrl: 'login/login.html',
           controller: 'LoginCtrl'})

@@ -1,0 +1,9 @@
+<div ng-if="!authenticated" style="color:white">
+    Please login, to see your dashboard.
+</div>
+
+<div ng-if="authenticated" class="my-chart" style="background-color: white">
+    <pie-chart data="pieData" options="options"></pie-chart>
+    <linechart data="data" options="options"></linechart>
+
+</div>
