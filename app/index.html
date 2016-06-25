@@ -9,24 +9,30 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
   <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+  <link rel="stylesheet" href="../node_modules/n3-charts/build/LineChart.css">
   <link rel="stylesheet" href="styles/main.css">
 
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/login">Login</a></li>
-    <li><a href="#/manage">Manage your applications</a></li>
-    <li><a href="#/users">Users</a></li>
-    <li><a href="#/logout">Logout</a></li>
+  <ul class="menu col-lg-2" style="list-style-type: none;">
+    <li><a href="#/"><img class="menu-icon" src="icons/speedometer.png">Dashboard</a></li>
+    <li><a href="#/login"><img class="menu-icon" src="icons/login-1.png">Login</a></li>
+    <li><a href="#/manage"><img class="menu-icon" src="icons/website.png">Manage</a></li>
+    <li><a href="#/users"><img class="menu-icon" src="icons/team.png">Users</a></li>
+    <li><a href="#/logout"><img class="menu-icon" src="icons/logout-1.png">Logout</a></li>
   </ul>
 
-  <div ng-view></div>
+  <div class="col-md-10" style="margin-top:40px" ng-view></div>
+
+  <a href="http://www.flaticon.com/" class="footer">Icons designed by Freepik and distributed by Flaticon</a>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
+  <script src="../node_modules/d3/d3.min.js"></script>
+  <script src="../node_modules/n3-charts/build/LineChart.js"></script>
   <script src="app.js"></script>
   <script src="login/login.js"></script>
   <script src="manage/manage.js"></script>
