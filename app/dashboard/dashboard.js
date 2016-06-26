@@ -34,8 +34,17 @@ angular.module('myApp')
                 axes: {x: {key: "x"}}
             };
 
+            $http.get(urls.apiUrl + "applications/5730dd4bc9e77c000189ad7a/loginNumber?from=1465565537&to=1467207137").then(
+                function successCallback(result) {
+                    $scope.loginNumber = result.data.number;
+                    console.log($scope.loginNumber);
+                },
+                function failureCallback(result) {
+                    console.log();
+                });
+
             $scope.pieData = [
-                {label: "FBApps", value: 2, color: "#1f77b4"},
+                {label: "FBApps", value: $scope.loginNumber, color: "#1f77b4"},
                 {label: "SimpleApps", value: 4, color: "#ff7f0e"},
                 {label: "GoogleApps", value: 1, color: "#2ca02c"}
             ];
