@@ -34,3 +34,11 @@ body {
     color: #cccccc;
     font-size: 12px;
 }
+.chart {
+    padding-top: 10px;
+}
+.dashboard-title {
+    font-size:22px;
+    color:#cccccc;
+    margin-bottom:10px;
+}
