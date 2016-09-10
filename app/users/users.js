@@ -32,21 +32,21 @@ angular.module('myApp')
 
             $scope.refreshUsers();
 
-            $scope.addPrivilegePopup = function (userId) {
+            $scope.addPrivilegePopup = function (userId, appId) {
                 ngDialog.open({
                     template: 'users/popups/addPrivilege.html',
                     className: 'ngdialog-theme-default',
                     controller: 'UsersCtrl',
-                    data: {"userId": userId}
+                    data: {"userId": userId, "appId": appId}
                 });
             };
 
-            $scope.deletePrivilegePopup = function (userId, privileges) {
+            $scope.deletePrivilegePopup = function (userId, appId, privileges) {
                 ngDialog.open({
                     template: 'users/popups/deletePrivilege.html',
                     className: 'ngdialog-theme-default',
                     controller: 'UsersCtrl',
-                    data: {"userId": userId, "privileges": privileges}
+                    data: {"userId": userId, "appId": appId, "privileges": privileges}
                 });
             };
             
@@ -61,7 +61,7 @@ angular.module('myApp')
 
             $scope.addPrivilege = function () {
 
-                $http.post(urls.apiUrl + "users/" + $scope.ngDialogData.userId + "/privileges", [$scope.privilege]).then(
+                $http.post(urls.apiUrl + "applications/" + $scope.ngDialogData.appId + "/users/" + $scope.ngDialogData.userId + "/privileges", [$scope.privilege]).then(
                     function successCallback(result) {
                         ngDialog.close();
                         $window.location.reload();
@@ -73,7 +73,7 @@ angular.module('myApp')
             };
 
             $scope.deletePrivilege = function (privilege) {
-                $http.delete(urls.apiUrl + "users/" + $scope.ngDialogData.userId + "/privileges/"+privilege).then(
+                $http.delete(urls.apiUrl + "applications/" + $scope.ngDialogData.appId + "/users/" + $scope.ngDialogData.userId + "/privileges/"+privilege).then(
                     function successCallback(result) {
                         ngDialog.close();
                         $window.location.reload();

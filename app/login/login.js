@@ -22,11 +22,13 @@ angular.module('myApp')
           config.headers["Authorization"] = $scope.login + ":" + $scope.password;
           $http.get(urls.apiUrl + "loginAdmin", config).then(
               function successCallback(response) {
-                  console.log(response.headers("X-AUTH-TOKEN"));
                   TokenStorage.store(response.headers("X-AUTH-TOKEN"));
                   $location.path("/manage").replace();
-
-              })
+              },
+              function failureCallback(response) {
+                  console.log("Can't login properly.")
+              }
+          )
       }
   
 }]);

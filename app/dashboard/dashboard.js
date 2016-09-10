@@ -7,7 +7,7 @@ angular.module('myApp')
             $scope.authenticated = TokenStorage.isAuthenticated();
 
 
-            $http.get(urls.apiUrl + "applications/5730dd4bc9e77c000189ad7a/hourLoginStats").then(
+            $http.get(urls.apiUrl + "applications/57d313d019388513cf91d701/hourLoginStats").then(
                 function successCallback(result) {
 
                     console.log(result.data);
