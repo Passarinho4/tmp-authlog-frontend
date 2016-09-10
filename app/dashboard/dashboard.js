@@ -39,5 +39,5 @@ angular.module('myApp')
                 function failureCallback(result) {
                     console.log("Can't get stats from server.");
                 });
-            
+
 }]);

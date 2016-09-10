@@ -49,7 +49,7 @@ angular.module('myApp')
                     data: {"userId": userId, "appId": appId, "privileges": privileges}
                 });
             };
-            
+
             $scope.createUserPopup = function (appId) {
                 ngDialog.open({
                     template: 'users/popups/createUser.html',
@@ -82,7 +82,7 @@ angular.module('myApp')
                         console.log("Can't remove privilege, something went wrong.");
                     });
             };
-            
+
             $scope.createUser = function () {
                 var userData = {};
                 userData.username = $scope.username;
@@ -95,7 +95,7 @@ angular.module('myApp')
                     function failureCallback(result) {
                         console.log("Can't create new user, something went wrong");
                     });
-                
+
             }
 
     }]);
