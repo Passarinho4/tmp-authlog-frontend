@@ -36,8 +36,8 @@
                 <td>{{user.mail}}</td>
                 <td>{{user.privileges}}</td>
                 <td>
-                    <button ng-click="addPrivilegePopup(user.id)" class="btn btn-xs btn-success">Add privilege</button>
-                    <button ng-click="deletePrivilegePopup(user.id, user.privileges)" class="btn btn-xs btn-warning">Delete privilege</button>
+                    <button ng-click="addPrivilegePopup(user.id, appId)" class="btn btn-xs btn-success">Add privilege</button>
+                    <button ng-click="deletePrivilegePopup(user.id, appId, user.privileges)" class="btn btn-xs btn-warning">Delete privilege</button>
                 </td>
             </tr>
             </tbody>

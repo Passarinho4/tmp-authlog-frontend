@@ -62,7 +62,7 @@ mainApp.config(function ($httpProvider) {
      * @type {string}
      */
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-})
+});
 
 mainApp.service('urls', function () {
     var domain = "http://51.255.48.55:8085/";
@@ -86,7 +86,7 @@ mainApp.factory('TokenAuthInterceptor', function ($q, TokenStorage) {
             }
             return $q.reject(error);
         }
-    };
-}).config(function ($httpProvider) {
+    }
+}).config(['$httpProvider' , function ($httpProvider) {
     $httpProvider.interceptors.push('TokenAuthInterceptor');
-});
+}]);
