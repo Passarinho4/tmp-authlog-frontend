@@ -65,7 +65,7 @@ mainApp.config(function ($httpProvider) {
 });
 
 mainApp.service('urls', function () {
-    var domain = "http://51.255.48.55:8090/";
+    var domain = "http://51.255.48.55:8085/";
     var api = "api/";
     this.apiUrl = domain + api;
 });
