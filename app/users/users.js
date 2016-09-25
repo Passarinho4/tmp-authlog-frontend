@@ -32,6 +32,43 @@ angular.module('myApp')
 
             $scope.refreshUsers();
 
+            $scope.editUserPopup = function (user, appId) {
+                ngDialog.open({
+                    template: 'users/popups/editUser.html',
+                    className: 'ngdialog-theme-default',
+                    controller: 'UsersCtrl',
+                    data: {"appId": appId, "user": user}
+                })
+            };
+
+            $scope.editUser = function () {
+                var form = new FormData();
+                form.append("file", $scope.ngDialogData.user.picture);
+                console.log($scope.ngDialogData.user.picture);
+                $http.post(urls.apiUrl + "applications/" + $scope.ngDialogData.appId + "/users/" + $scope.ngDialogData.user.id + "/photo",
+                    form, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                }).then(
+                    function successCallback(result) {
+                        console.log("LOL")
+                    },
+                    function failureCallback(result) {
+                        console.log("NIE");
+                    });
+
+            };
+            
+            $scope.deleteUser = function(user, appId) {
+                $http.delete(urls.apiUrl + "applications/" + appId + "/users/" + user.username).then(
+                    function successCallback(result) {
+                        console.log("Removed")
+                    },
+                    function failureCallback(result) {
+                        console.log("Error");
+                    });
+            };
+
             $scope.addPrivilegePopup = function (userId, appId) {
                 ngDialog.open({
                     template: 'users/popups/addPrivilege.html',
@@ -49,7 +86,7 @@ angular.module('myApp')
                     data: {"userId": userId, "appId": appId, "privileges": privileges}
                 });
             };
-
+            
             $scope.createUserPopup = function (appId) {
                 ngDialog.open({
                     template: 'users/popups/createUser.html',
@@ -82,7 +119,7 @@ angular.module('myApp')
                         console.log("Can't remove privilege, something went wrong.");
                     });
             };
-
+            
             $scope.createUser = function () {
                 var userData = {};
                 userData.username = $scope.username;
@@ -95,7 +132,9 @@ angular.module('myApp')
                     function failureCallback(result) {
                         console.log("Can't create new user, something went wrong");
                     });
-
+                
             }
+
+
 
     }]);
