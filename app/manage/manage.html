@@ -4,26 +4,29 @@
   <button class="btn btn-sm btn-success" ng-click="createApplicationPopup()">Add Application</button>
   <div class="panel panel-primary panel-application">
     <div class="panel-heading">Your applications</div>
-
-    <table class="table table-striped">
-      <thead>
+    <div style="overflow-x: auto">
+      <table class="table table-striped">
+        <thead>
         <tr>
           <th>Id</th>
           <th>FBAppId</th>
           <th>FBRedirectURI</th>
+          <th>FBSecret</th>
           <th>Secret</th>
           <th>Options</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr ng-repeat="app in applications">
           <td>{{app.appId}}</td>
           <td>{{app.facebookAppId}}</td>
           <td>{{app.facebookRedirectURI}}</td>
+          <td>{{app.facebookSecret}}</td>
           <td>{{app.secret}}</td>
           <td><button class="btn-xs btn-danger" ng-click="deleteApplication(app.appId)">Delete</button></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
