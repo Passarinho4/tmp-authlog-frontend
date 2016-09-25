@@ -68,6 +68,7 @@ mainApp.service('urls', function () {
     var domain = "http://51.255.48.55:8085/";
     var api = "api/";
     this.apiUrl = domain + api;
+    this.applicationId = "57d313d019388513cf91d701";
 });
 
 
@@ -89,4 +90,20 @@ mainApp.factory('TokenAuthInterceptor', function ($q, TokenStorage) {
     }
 }).config(['$httpProvider' , function ($httpProvider) {
     $httpProvider.interceptors.push('TokenAuthInterceptor');
+}]);
+
+mainApp.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
 }]);

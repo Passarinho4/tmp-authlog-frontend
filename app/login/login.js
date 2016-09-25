@@ -20,7 +20,7 @@ angular.module('myApp')
           var config = {};
           config.headers = {};
           config.headers["Authorization"] = $scope.login + ":" + $scope.password;
-          $http.get(urls.apiUrl + "loginAdmin", config).then(
+          $http.get(urls.apiUrl + "application/"+urls.applicationId+"/login", config).then(
               function successCallback(response) {
                   TokenStorage.store(response.headers("X-AUTH-TOKEN"));
                   $location.path("/manage").replace();
