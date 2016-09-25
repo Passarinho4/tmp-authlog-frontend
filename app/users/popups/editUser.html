@@ -1,18 +1,11 @@
 <div class="form-group form-create">
 
-    <label for="username">Username</label>
-    <input ng-model="ngDialogData.user.username" type="text" id="username" class="form-control">
-    <label for="password">Password (Please hash it before)</label>
-    <input ng-model="ngDialogData.user.password" type="text" id="password" class="form-control">
     <label for="mail">Mail</label>
     <input ng-model="ngDialogData.user.mail" type="email" id="mail" class="form-control">
     <label for="gender">Gender</label>
     <input ng-model="ngDialogData.user.gender" type="email" id="gender" class="form-control">
     <label for="locale">Locale</label>
     <input ng-model="ngDialogData.user.locale" type="text" id="locale" class="form-control">
-    <label for="picture">Picture</label>
-    <!-- angular doesn't support binding for file type -->
-    <input file-model="ngDialogData.user.picture" type="file" id="picture" class="form-control">
 
-    <button ng-click="editUser()" class="btn btn-primary">Create user</button>
+    <button ng-click="editUser()" class="btn btn-primary">Edit user</button>
 </div>
