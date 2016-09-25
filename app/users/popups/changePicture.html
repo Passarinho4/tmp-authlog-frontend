@@ -1,0 +1,8 @@
+<div class="form-group form-create">
+
+    <label for="picture">Picture</label>
+    <!-- angular doesn't support binding for file type -->
+    <input file-model="ngDialogData.user.picture" type="file" id="picture" class="form-control">
+    <button ng-click="changePicture()" class="btn btn-primary">Change picture</button>
+
+</div>

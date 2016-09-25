@@ -42,6 +42,31 @@ angular.module('myApp')
             };
 
             $scope.editUser = function () {
+                var userData = {};
+                userData.mail = $scope.ngDialogData.user.mail;
+                userData.gender = $scope.ngDialogData.user.gender;
+                userData.locale = $scope.ngDialogData.user.locale;
+                $http.put(urls.apiUrl + "applications/" + $scope.ngDialogData.appId + "/users/" + $scope.ngDialogData.user.username, userData).then(
+                    function successCallback(result) {
+                        ngDialog.close();
+                        console.log("Done.")
+                    },
+                    function failureCallback(result) {
+                        console.log("Error.");
+                    });
+
+            };
+
+            $scope.changePicturePopup = function (user, appId) {
+                ngDialog.open({
+                    template: 'users/popups/changePicture.html',
+                    className: 'ngdialog-theme-default',
+                    controller: 'UsersCtrl',
+                    data: {"appId": appId, "user": user}
+                })
+            };
+
+            $scope.changePicture = function () {
                 var form = new FormData();
                 form.append("file", $scope.ngDialogData.user.picture);
                 console.log($scope.ngDialogData.user.picture);
@@ -51,10 +76,11 @@ angular.module('myApp')
                     headers: {'Content-Type': undefined}
                 }).then(
                     function successCallback(result) {
-                        console.log("LOL")
+                        ngDialog.close();
+                        console.log("Picture changed")
                     },
                     function failureCallback(result) {
-                        console.log("NIE");
+                        console.log("Error during changing picture");
                     });
 
             };
