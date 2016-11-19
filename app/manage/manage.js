@@ -29,6 +29,7 @@ angular.module('myApp')
         app.facebookAppId = $scope.facebookAppId;
         app.facebookRedirectURI = $scope.facebookRedirectURI;
         app.facebookSecret = $scope.facebookSecret;
+        app.name = $scope.applicationName;
 
         $http.post(urls.apiUrl + "applications", app).then(
             function successCallback(response) {

@@ -9,6 +9,7 @@
         <thead>
         <tr>
           <th>Id</th>
+          <th>Name</th>
           <th>FBAppId</th>
           <th>FBRedirectURI</th>
           <th>FBSecret</th>
@@ -19,6 +20,7 @@
         <tbody>
         <tr ng-repeat="app in applications">
           <td>{{app.appId}}</td>
+          <td>{{app.name}}</td>
           <td>{{app.facebookAppId}}</td>
           <td>{{app.facebookRedirectURI}}</td>
           <td>{{app.facebookSecret}}</td>
