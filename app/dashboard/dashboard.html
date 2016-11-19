@@ -3,8 +3,23 @@
 </div>
 
 <div class="dashboard-title">Dashboard</div>
-<div ng-if="authenticated" class="my-chart" style="background-color: white">
+<div ng-if="authenticated" style="background-color: white; height: 100%">
 
-    <linechart data="data" options="options"></linechart>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            Select application
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li ng-repeat="application in applications">
+                <a ng-click="refreshChart(application.appId)">{{application.appId}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="my-chart">
+        <linechart data="data" options="options" style="height: 60vh"></linechart>
+    </div>
 
 </div>
