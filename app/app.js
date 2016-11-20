@@ -16,7 +16,9 @@ var mainApp = angular.module('myApp', [
           controller: 'LoginCtrl'})
       .when('/manage', {
           templateUrl: 'manage/manage.html',
-          controller: 'ManageCtrl'})
+          controller: 'ManageCtrl',
+          controllerAs: "vm"
+      })
       .when('/users', {
           templateUrl: 'users/users.html',
           controller: 'UsersCtrl'})
@@ -65,7 +67,7 @@ mainApp.config(function ($httpProvider) {
 });
 
 mainApp.service('urls', function () {
-    var domain = "http://51.255.48.55:8085/";
+    var domain = "http://localhost:8085/";
     var api = "api/";
     this.apiUrl = domain + api;
     this.applicationId = "57d313d019388513cf91d701";
