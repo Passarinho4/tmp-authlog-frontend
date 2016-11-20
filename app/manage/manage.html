@@ -1,32 +1,37 @@
-
 <div style="padding-left: 0; padding-right: 0">
-  <button class="btn btn-sm btn-primary" ng-click="refreshApplications()">Load Applications</button>
-  <button class="btn btn-sm btn-success" ng-click="createApplicationPopup()">Add Application</button>
-  <div class="panel panel-primary panel-application">
-    <div class="panel-heading">Your applications</div>
-    <div style="overflow-x: auto">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>Id</th>
-          <th>FBAppId</th>
-          <th>FBRedirectURI</th>
-          <th>FBSecret</th>
-          <th>Secret</th>
-          <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="app in applications">
-          <td>{{app.appId}}</td>
-          <td>{{app.facebookAppId}}</td>
-          <td>{{app.facebookRedirectURI}}</td>
-          <td>{{app.facebookSecret}}</td>
-          <td>{{app.secret}}</td>
-          <td><button class="btn-xs btn-danger" ng-click="deleteApplication(app.appId)">Delete</button></td>
-        </tr>
-        </tbody>
-      </table>
+    <button class="btn btn-sm btn-success" ng-click="vm.createApplicationPopup()">Add Application</button>
+    <div class="panel panel-primary panel-application">
+        <div class="panel-heading">Your applications</div>
+        <div style="overflow-x: auto">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>FBAppId</th>
+                    <th>FBRedirectURI</th>
+                    <th>FBSecret</th>
+                    <th>Secret</th>
+                    <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="app in vm.applications">
+                    <td>{{app.appId}}</td>
+                    <td>{{app.name}}</td>
+                    <td>{{app.facebookAppId}}</td>
+                    <td>{{app.facebookRedirectURI}}</td>
+                    <td>{{app.facebookSecret}}</td>
+                    <td>{{app.secret}}</td>
+                    <td>
+                        <button class="btn-xs btn-danger" ng-click="vm.deleteApplication(app.appId)">Delete</button>
+                    </td>
+                    <td>
+                        <button class="btn-xs btn-warning" ng-click="vm.updateApplicationPopup(app.appId)">Edit</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>

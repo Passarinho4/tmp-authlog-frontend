@@ -16,7 +16,9 @@ var mainApp = angular.module('myApp', [
           controller: 'LoginCtrl'})
       .when('/manage', {
           templateUrl: 'manage/manage.html',
-          controller: 'ManageCtrl'})
+          controller: 'ManageCtrl',
+          controllerAs: "vm"
+      })
       .when('/users', {
           templateUrl: 'users/users.html',
           controller: 'UsersCtrl'})
